@@ -1,4 +1,4 @@
-package codility.lession2.arrays.task1;
+package codility.lesson.lesson9.maxdoubleslicesum;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +8,6 @@ class SolutionTest {
 
     @Test
     void solution() {
-        assertArrayEquals(new int[] {9,7,6,3,8}, new Solution().solution(new int[] {3, 8, 9, 7, 6}, 3));
+        assertEquals(17, new int[]{3, 2, 6, -1, 4, 5, -1, 2});
     }
 }
