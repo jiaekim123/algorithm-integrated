@@ -46,6 +46,9 @@ class Solution {
         else if (personQueue.size() >= m) {
             if (personQueue.peek().hour == 23 && personQueue.peek().minute == 59) answer = START_TIME;
             else {
+                for (int i = 0; i < m - 1; i++){
+                    personQueue.poll();
+                }
                 if (personQueue.peek().minute -1 < 0 ) {
                     answer = (new Time(personQueue.peek().hour - 1, 59).toString());
                 } else {
