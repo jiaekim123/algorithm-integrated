@@ -4,9 +4,8 @@
  */
 package programmers.courses30.lesson72410;
 
-import java.util.regex.Pattern;
-
 class Solution {
+    // TODO: 정규표현식 REGEX를 이용한 static 중첩 클래스로 만들어서 풀어보기 ("[^a-z0-9\\-_.]" PATTERN)
     public String solution(String new_id) {
         String answer = "";
         // 1. 대문자 -> 소문자
