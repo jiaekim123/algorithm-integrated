@@ -8,46 +8,30 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] numbers) {
-        Set<Integer> nums = new HashSet<>();
-        final int length = numbers.length;
-        boolean[] visited = new boolean[length];
-
-        dfs(numbers, visited, 0, 0, length, nums);
-
+        Set<Integer> nums = selectTwoNum(numbers);
+        // nums.stream().mapToInt(Integer::intValue).toArray(); // 성능이 좋지 않음.
         return getAnswer(nums);
+    }
+
+    // n개 중 2개 선택해서 Set에 추가하기
+    private Set<Integer> selectTwoNum(int[] numbers) {
+        Set<Integer> set = new TreeSet<>();
+        for (int i = 0; i < numbers.length; i++){
+            for (int j = 0; j < numbers.length; j++){
+                if (i != j) set.add(numbers[i] + numbers[j]);
+            }
+        }
+        return set;
     }
 
     private int[] getAnswer(Set<Integer> nums) {
         int[] answer = new int[nums.size()];
-        // 오름차순 정렬
         Iterator<Integer> it = nums.iterator();
         int i = 0;
         while (it.hasNext()) {
             answer[i] = it.next();
             i++;
         }
-        Arrays.sort(answer);
         return answer;
-    }
-
-    // n개 중 2개 선택해서 Set에 추가하기
-    private void dfs(int[] numbers, boolean[] visited, int k, int n, int length, Set<Integer> nums) {
-        if (k == length) {
-            if (n == 2) nums.add(getAddNum(numbers, visited));
-            return;
-        }
-        visited[k] = false;
-        dfs(numbers, visited, k + 1, n, length, nums);
-        visited[k] = true;
-        dfs(numbers, visited, k + 1, n + 1, length, nums);
-    }
-
-    // visited가 true인 것을 골라서 더하기
-    private int getAddNum(int[] numbers, boolean[] visited) {
-        int num = 0;
-        for (int i = 0; i < visited.length; i++) {
-            if (visited[i]) num += numbers[i];
-        }
-        return num;
     }
 }
