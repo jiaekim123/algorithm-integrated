@@ -1,8 +1,8 @@
 /*
-    https://programmers.co.kr/skill_checks/239712?challenge_id=2609
-    [Level3][항공권 여행경로]
+    https://programmers.co.kr/learn/courses/30/lessons/43164
+    [프로그래머스][깊이/너비 우선 탐색][항공권 여행경로]
  */
-package programmers.courses30.lesson2609;
+package programmers.courses30.lesson43164;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package programmers.courses30.lesson2609;
+package programmers.courses30.lesson43164;
 
 import org.junit.jupiter.api.Test;
 

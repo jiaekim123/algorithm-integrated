@@ -64,6 +64,7 @@
 | [링크](https://programmers.co.kr/learn/courses/30/lessons/43165) | 타겟 넘버 | Level 2 | DFS | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/main/java/programmers/courses30/lesson43165/Solution.java) | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/test/java/programmers/courses30/lesson43165/SolutionTest.java) | |
 | [링크](https://programmers.co.kr/learn/courses/30/lessons/43162) | 네트워크 | Level 3 | DFS | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/main/java/programmers/courses30/lesson43162/Solution.java) | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/test/java/programmers/courses30/lesson43162/SolutionTest.java) | |
 | [링크](https://programmers.co.kr/learn/courses/30/lessons/43163) | 단어변환 | Level 3 | DFS | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/main/java/programmers/courses30/lesson43163/Solution.java) | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/test/java/programmers/courses30/lesson43163/SolutionTest.java) | |
+| [링크](https://programmers.co.kr/learn/courses/30/lessons/43164) | 여행경로 | Level 3 | DFS | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/main/java/programmers/courses30/lesson43164/Solution.java) | [링크](https://github.com/jiaekim123/algorithm-integrated/blob/master/src/test/java/programmers/courses30/lesson43164/SolutionTest.java) | |
 
 #### 이분 탐색
 | 문제 | 제목 | 레벨 | 유형 | 소스 코드 | 테스트 코드 | 설명 |
