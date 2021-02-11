@@ -14,5 +14,8 @@ class SolutionTest {
         assertEquals("00:00", new Solution().solution(1, 1, 5, new String[] {"00:01", "00:01", "00:01", "00:01", "00:01"}));
         assertEquals("09:00", new Solution().solution(1, 1, 1, new String[] {"23:59"}));
         assertEquals("18:00", new Solution().solution(10, 60, 45, new String[] {"23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"}));
+        assertEquals("18:00", new Solution().solution(10, 60, 5, new String[] {"9:00", "10:05", "17:55", "18:00",  "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"}));
+        assertEquals("18:00", new Solution().solution(10, 60, 5, new String[] {"9:00", "10:05", "17:55", "18:00",  "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"}));
+        assertEquals("09:00", new Solution().solution(1, 1, 5, new String[] {"00:01", "00:01", "00:01", "00:01", "09:05"}));
     }
 }

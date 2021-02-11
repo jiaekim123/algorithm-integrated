@@ -35,54 +35,67 @@ class Solution {
         while (busQueue.size() > 1) {
             Time bus = busQueue.poll();
             for (int i = 0; i < m; i++) {
-                if (!personQueue.isEmpty() && bus.compareTo(personQueue.peek()) > 0) {
+                if (personQueue.isEmpty()) break;
+                if (bus.compareTo(personQueue.peek()) >= 0) {
                     personQueue.poll();
                 }
             }
         }
 
         // 막차
-        if (personQueue.size() < m) answer = busQueue.peek().toString();
-        else if (personQueue.size() >= m) {
-            if (personQueue.peek().hour == 23 && personQueue.peek().minute == 59) answer = START_TIME;
+        if (personQueue.size() < m) answer = busQueue.peek().toString(); // 버스에 남은 자리보다 사람이 적을 때 버스 시간 반환
+        else { // 버스에 남은 자리보다 사람이 많을 때
+            // 제일 빠른 시간에 온 사람이 버스보다 늦게 온 경우 버스 시간을 반환
+            if (personQueue.peek().compareTo(busQueue.peek()) > 0) return busQueue.peek().toString();
             else {
-                for (int i = 0; i < m - 1; i++){
-                    personQueue.poll();
+                // 빨리 온 크루부터 자리 1자리 남기고 채우기, 먄약 가장 빨리온 크루의 시간이 막차 시간보다 늦다면 버스 시간을 반환
+                for (int i = 0; i < m - 1; i++) {
+                    if (busQueue.peek().compareTo(personQueue.peek()) >= 0) {
+                        personQueue.poll();
+                    } else {
+                        return busQueue.peek().toString();
+                    }
                 }
-                if (personQueue.peek().minute -1 < 0 ) {
-                    answer = (new Time(personQueue.peek().hour - 1, 59).toString());
+                // 마지막 크루가 버스보다 늦었으면 버스 시간을 반환
+                if (busQueue.peek().compareTo(personQueue.peek()) < 0) {
+                    return busQueue.peek().toString();
+                }
+                // 마지막 크루보다 1분 빨리오기
+                if (personQueue.peek().minute - 1 < 0) {
+                    return (new Time(personQueue.peek().hour - 1, 59).toString());
                 } else {
-                    answer = (new Time(personQueue.peek().hour, personQueue.peek().minute - 1).toString());
+                    return (new Time(personQueue.peek().hour, personQueue.peek().minute - 1).toString());
                 }
             }
         }
 
         return answer;
     }
+
+    static class Time implements Comparable<Time> {
+        int hour;
+        int minute;
+
+        Time(String time) {
+            String[] times = time.split(":");
+            this.hour = Integer.parseInt(times[0]);
+            this.minute = Integer.parseInt(times[1]);
+        }
+
+        Time(int hour, int minute) {
+            this.hour = hour;
+            this.minute = minute;
+        }
+
+        @Override
+        public int compareTo(Time person) {
+            return ((this.hour - person.hour) == 0) ? this.minute - person.minute : this.hour - person.hour;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("%02d:%02d", hour, minute);
+        }
+    }
 }
 
-class Time implements Comparable<Time> {
-    int hour;
-    int minute;
-
-    Time(String time) {
-        String[] times = time.split(":");
-        this.hour = Integer.parseInt(times[0]);
-        this.minute = Integer.parseInt(times[1]);
-    }
-
-    Time(int hour, int minute) {
-        this.hour = hour;
-        this.minute = minute;
-    }
-
-    @Override
-    public int compareTo(Time person) {
-        return ((this.hour - person.hour) == 0) ? this.minute - person.minute : this.hour - person.hour;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%02d:%02d", hour, minute);
-    }
-}
