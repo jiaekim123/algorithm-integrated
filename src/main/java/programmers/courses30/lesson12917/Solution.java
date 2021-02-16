@@ -5,27 +5,13 @@
 package programmers.courses30.lesson12917;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 class Solution {
     public String solution(String s) {
-        Character[] charArray = boxing(s.toCharArray());
-        Arrays.sort(charArray, Collections.reverseOrder());
-        return String.valueOf(unBoxing(charArray));
-    }
-    private Character[] boxing(char[] arr){
-        Character[] charArr = new Character[arr.length];
-        for (int i = 0; i<arr.length; i++){
-            charArr[i] = arr[i];
-        }
-        return charArr;
-    }
-
-    private char[] unBoxing(Character[] arr){
-        char[] charArr = new char[arr.length];
-        for (int i = 0; i<arr.length; i++){
-            charArr[i] = arr[i];
-        }
-        return charArr;
+        char[] charArray = s.toCharArray();
+        Arrays.sort(charArray);
+        StringBuilder sb = new StringBuilder();
+        sb.append(charArray).reverse();
+        return sb.toString();
     }
 }
