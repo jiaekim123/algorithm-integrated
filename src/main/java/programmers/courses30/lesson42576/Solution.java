@@ -6,27 +6,23 @@ package programmers.courses30.lesson42576;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
         Map<String, Integer> participantMap = new HashMap<>();
         for (String player : participant) {
-            Integer playerCount = participantMap.getOrDefault(player, 0);
-            if (playerCount != 0) {
-                participantMap.replace(player, playerCount + 1);
-            } else {
-                participantMap.put(player, 1);
-            }
+            participantMap.put(player, participantMap.getOrDefault(player, 0) + 1);
         }
 
         for (String player : completion) {
-            Integer playerCount = participantMap.getOrDefault(player, 0);
-            if (playerCount > 1) {
-                participantMap.replace(player, playerCount - 1);
-            } else {
-                participantMap.remove(player);
-            }
+            participantMap.put(player, participantMap.get(player) - 1);
         }
-        return participantMap.keySet().iterator().next();
+
+        for (String key : participantMap.keySet()) {
+            if (participantMap.get(key) == 1) return key;
+        }
+
+        return "invalid";
     }
 }
