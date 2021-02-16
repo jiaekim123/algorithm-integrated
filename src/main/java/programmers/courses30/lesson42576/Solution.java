@@ -6,11 +6,10 @@ package programmers.courses30.lesson42576;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
-        Map<String, Integer> participantMap = new HashMap<>();
+        Map<String, Integer> participantMap = new HashMap<>(participant.length);
         for (String player : participant) {
             participantMap.put(player, participantMap.getOrDefault(player, 0) + 1);
         }
@@ -22,7 +21,6 @@ class Solution {
         for (String key : participantMap.keySet()) {
             if (participantMap.get(key) == 1) return key;
         }
-
         return "invalid";
     }
 }
