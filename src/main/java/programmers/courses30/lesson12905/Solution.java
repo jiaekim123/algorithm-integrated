@@ -4,8 +4,6 @@
  */
 package programmers.courses30.lesson12905;
 
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[][] board) {
         int answer = 0;
@@ -14,7 +12,7 @@ class Solution {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == 1) {
                     if (i > 0 && j > 0) {
-                        int num = Arrays.stream(new int[]{maxBoard[i - 1][j], maxBoard[i - 1][j - 1], maxBoard[i][j - 1]}).min().getAsInt() + 1;
+                        int num = getMin(maxBoard[i - 1][j], maxBoard[i - 1][j - 1], maxBoard[i][j - 1]) + 1;
                         answer = Math.max(num, answer);
                         maxBoard[i][j] = num;
                     } else {
@@ -28,5 +26,13 @@ class Solution {
         }
 
         return (int) Math.pow(answer, 2);
+    }
+    private int getMin(int num1, int num2, int num3){
+        int min = Integer.MAX_VALUE;
+        if (num1 < min) min = num1;
+        if (num2 < min) min = num2;
+        if (num3 < min) min = num3;
+        return min;
+
     }
 }
