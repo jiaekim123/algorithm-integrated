@@ -4,16 +4,29 @@
  */
 package programmers.courses30.lesson12953;
 
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[] arr) {
-        int answer = 0;
-        Arrays.sort(arr);
-        int lcm = arr[0];
-        for (int num : arr) {
-
+        return lcmN(arr);
+    }
+    private int gcd(int a, int b){
+        while(b!=0){
+            int temp = a % b;
+            a = b;
+            b = temp;
         }
-        return answer;
+        return a;
+    }
+
+    // 최소 공배수
+    private int lcmN(int[] arr){
+        int lcm = arr[0];
+        for (int i = 1; i<arr.length; i++){
+            lcm = lcm(lcm, arr[i]);
+        }
+        return lcm;
+    }
+
+    private int lcm(int a, int b){
+        return a * b / gcd(a, b);
     }
 }
