@@ -10,35 +10,19 @@ import java.util.Queue;
 class Solution {
     public int solution(int cacheSize, String[] cities) {
         int answer = 0;
-        Queue<City> queue = new LinkedList<>();
-        for (int i = 0; i < cities.length; i++) {
-
-            if (queue.contains(new City(cities[i]))) {
+        Queue<String> queue = new LinkedList<>();
+        if (cacheSize == 0) return cities.length * 5;
+        for (String city : cities){
+            if (queue.contains(city.toLowerCase())){
+                queue.remove(city.toLowerCase());
+                queue.offer(city.toLowerCase());
                 answer++;
             } else {
-                if (queue.size() >= cacheSize) {
-                    queue.poll();
-                }
-                queue.offer(new City(cities[i]));
+                if (queue.size() == cacheSize) queue.poll();
+                queue.offer(city.toLowerCase());
                 answer += 5;
             }
         }
         return answer;
-    }
-}
-
-class City {
-    String name;
-
-    public City(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        City city = (City) o;
-        return name.toUpperCase().equals(city.name.toUpperCase());
     }
 }
