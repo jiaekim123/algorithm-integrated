@@ -22,5 +22,6 @@ class Solution {
             }
         }
         return map.get('p') == map.get('y') ? true : false;
+        // return s.chars().filter( e -> 'p'== e).count() == s.chars().filter( e -> 'y'== e).count();
     }
 }
