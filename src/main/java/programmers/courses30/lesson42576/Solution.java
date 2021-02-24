@@ -9,24 +9,18 @@ import java.util.Map;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
-        Map<String, Integer> participantMap = new HashMap<>();
+        Map<String, Integer> participantMap = new HashMap<>(participant.length);
         for (String player : participant) {
-            Integer playerCount = participantMap.getOrDefault(player, 0);
-            if (playerCount != 0) {
-                participantMap.replace(player, playerCount + 1);
-            } else {
-                participantMap.put(player, 1);
-            }
+            participantMap.put(player, participantMap.getOrDefault(player, 0) + 1);
         }
 
         for (String player : completion) {
-            Integer playerCount = participantMap.getOrDefault(player, 0);
-            if (playerCount > 1) {
-                participantMap.replace(player, playerCount - 1);
-            } else {
-                participantMap.remove(player);
-            }
+            participantMap.put(player, participantMap.get(player) - 1);
         }
-        return participantMap.keySet().iterator().next();
+
+        for (String key : participantMap.keySet()) {
+            if (participantMap.get(key) == 1) return key;
+        }
+        return "invalid";
     }
 }
