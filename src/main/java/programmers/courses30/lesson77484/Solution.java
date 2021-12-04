@@ -1,3 +1,7 @@
+/*
+    https://programmers.co.kr/learn/courses/30/lessons/77484
+    [프로그래머스][2021 Dev-Matching 웹 백엔드 개발 상반기] 로또의 최고 순위와 최저 순위
+ */
 package programmers.courses30.lesson77484;
 
 import java.util.Arrays;
